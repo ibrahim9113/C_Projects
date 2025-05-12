@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+char calculate_grade(int marks) {
+    if (marks >= 90) return 'A';
+    if (marks >= 80) return 'B';
+    if (marks >= 70) return 'C';
+    if (marks >= 60) return 'D';
+    return 'F';
+}
+
+int main() {
+    int marks;
+    printf("Enter marks: ");
+    scanf("%d", &marks);
+
+    char grade = calculate_grade(marks);
+    printf("Grade: %c\n", grade);
+
+    return 0;
+}

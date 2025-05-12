@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_TASKS 10
+
+void add_task(char tasks[MAX_TASKS][100], int *task_count) {
+    if (*task_count < MAX_TASKS) {
+        printf("Enter the task: ");
+        getchar();  // Consume the newline left by scanf
+        fgets(tasks[*task_count], 100, stdin);
+        (*task_count)++;
+    } else {
+        printf("Task list is full!\n");
+    }
+}
+
+void display_tasks(char tasks[MAX_TASKS][100], int task_count) {
+    printf("\nTo-Do List:\n");
+    for (int i = 0; i < task_count; i++) {
+        printf("%d. %s", i + 1, tasks[i]);
+    }
+}
+
+int main() {
+    char tasks[MAX_TASKS][100];
+    int task_count = 0;
+    int choice;
+
+    while (1) {
+        printf("\n1. Add Task\n2. Display Tasks\n3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                add_task(tasks, &task_count);
+                break;
+            case 2:
+                display_tasks(tasks, task_count);
+                break;
+            case 3:
+                printf("Exiting the program.\n");
+                return 0;
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
+    return 0;
+}
